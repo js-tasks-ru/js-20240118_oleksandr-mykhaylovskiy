@@ -7,13 +7,10 @@
 export function trimSymbols(string, size) {
     if(size === undefined) return string;
 
-    const data = {
-        counter: 0,
-        currentLetter: null,
-        res: '',
-    }
+    let counter = 0;
+    let currentLetter = null;
+    let res = '';
 
-    let { counter, currentLetter, res } = data;
 
     for(let i=0; i<string.length; i++){
         if(res.length>0 && currentLetter !== string[i]){

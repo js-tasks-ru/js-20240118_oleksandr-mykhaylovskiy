@@ -6,20 +6,15 @@
 export function createGetter(path) {
     const parsedKeys = path.split('.')
 
-    let result
-
-    return function step(obj, keys = [...parsedKeys]){
-        if(!keys.length){
-            result = obj;
-            return result;
+    return function step(obj, keys = [...parsedKeys]) {
+        if (!keys.length) {
+            return obj
         }
 
-        const key = keys.shift();
+        const key = keys.shift()
 
-        if (Object.hasOwn(obj, key)){
-            step(obj[key], keys);
-        }
-
-        return result;
+        if (Object.hasOwn(obj, key)) {
+            return step(obj[key], keys)
+        } 
     }
 }
